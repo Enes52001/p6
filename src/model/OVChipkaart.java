@@ -27,10 +27,11 @@ public class OVChipkaart {
     )
     private Reiziger reiziger;
 
-    @OneToMany(
-            mappedBy = "ov",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+    @ManyToMany
+    @JoinTable(
+            name = "ov_chipkaart_product",
+            joinColumns = @JoinColumn(name = "kaart_nummer"),
+            inverseJoinColumns = @JoinColumn(name = "product_nummer")
     )
     private List<Product> product;
 

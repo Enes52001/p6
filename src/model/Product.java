@@ -20,10 +20,11 @@ public class Product {
     @Column(name = "prijs")
     private double prijs;
 
-    @OneToMany(
-            mappedBy = "product_nummer",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+    @ManyToMany
+    @JoinTable(
+            name = "ov_chipkaart_product",
+            joinColumns = @JoinColumn(name = "product_nummer"),
+            inverseJoinColumns = @JoinColumn(name = "kaart_nummer")
     )
     private List<OVChipkaart> ov;
 
