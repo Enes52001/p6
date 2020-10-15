@@ -20,18 +20,8 @@ public class Product {
     @Column(name = "prijs")
     private double prijs;
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "product_nummer=" + product_nummer +
-                ", naam='" + naam + '\'' +
-                ", beschrijving='" + beschrijving + '\'' +
-                ", prijs=" + prijs +
-                '}';
-    }
-
     @OneToMany(
-            mappedBy = "product",
+            mappedBy = "product_nummer",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
@@ -70,5 +60,15 @@ public class Product {
 
     public List<model.OVChipkaart> getOv() {
         return ov;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "product_nummer=" + product_nummer +
+                ", naam='" + naam + '\'' +
+                ", beschrijving='" + beschrijving + '\'' +
+                ", prijs=" + prijs +
+                '}';
     }
 }

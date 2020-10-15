@@ -23,7 +23,7 @@ public class OVChipkaart {
 
     @ManyToOne
     @JoinColumn(name = "reiziger_id",
-            foreignKey = @ForeignKey(name = "PERSON_ID_FK")
+            foreignKey = @ForeignKey(name = "REIZIGER_ID_FK")
     )
     private Reiziger reiziger;
 
