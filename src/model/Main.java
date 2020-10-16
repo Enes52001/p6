@@ -1,6 +1,8 @@
 package model;
 
 
+import DAO.ReizigerDAO;
+import DAO.ReizigerDAOHibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -9,6 +11,7 @@ import org.hibernate.query.Query;
 
 import javax.persistence.metamodel.EntityType;
 import javax.persistence.metamodel.Metamodel;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -44,6 +47,10 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
         testFetchAll();
+
+        ReizigerDAO rdao = new ReizigerDAOHibernate();
+        Reiziger reiziger = new Reiziger(52, "Hans", "van", "Dijk", new Date(1999-12-12));
+        rdao.save(reiziger);
     }
 
     /**
@@ -66,4 +73,7 @@ public class Main {
             session.close();
         }
     }
+
+
+
 }
