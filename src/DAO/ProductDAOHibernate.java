@@ -55,7 +55,10 @@ public class ProductDAOHibernate implements ProductDAO {
 
     @Override
     public List<Product> findByOvChipkaart(OVChipkaart ov) {
-        return null;
+        Session session = sessionFactory.openSession();
+        List<Product> product = session.createQuery("from Product where ov_chipkaart = :r").setParameter("r", ov).list();
+        session.close();
+        return product;
     }
 
     @Override

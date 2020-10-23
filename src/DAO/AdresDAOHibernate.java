@@ -61,7 +61,10 @@ public class AdresDAOHibernate implements AdresDAO {
 
     @Override
     public Adres findByReiziger(Reiziger r) {
-        return null;
+        Session session = sessionFactory.openSession();
+        List<Adres> adres = session.createQuery("from Adres where reiziger = :r").setParameter("r", r).list();
+        session.close();
+        return adres.get(0);
     }
 
     @Override

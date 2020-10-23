@@ -63,10 +63,9 @@ public class ReizigerDAOHibernate implements ReizigerDAO {
     @Override
     public List<Reiziger> findByGbDatum(String datum) {
         Session session = sessionFactory.openSession();
-        List<Reiziger> lijst = session.get(Reiziger.class, datum));
-        // hier loop ik vast
+        List<Reiziger> lijst = session.createQuery("from Reiziger where geboortedatum = :gbdatum").setParameter("gbdatum", datum).list();
         session.close();
-        return reiziger;
+        return lijst;
     }
 
     @Override

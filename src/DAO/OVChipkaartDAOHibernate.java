@@ -70,6 +70,9 @@ public class OVChipkaartDAOHibernate implements OVChipkaartDAO {
 
     @Override
     public OVChipkaart findByReiziger(Reiziger r) {
-        return null;
+        Session session = sessionFactory.openSession();
+        List<OVChipkaart> ov = session.createQuery("from ov_chipkaart where reiziger = :r").setParameter("r", r).list();
+        session.close();
+        return ov.get(0);
     }
 }
